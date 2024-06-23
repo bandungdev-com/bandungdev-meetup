@@ -1,20 +1,37 @@
-import { Link } from "react-router-dom";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Slash } from "lucide-react";
+import { Link, Outlet } from "react-router-dom";
 
 export function RootRoute() {
   return (
     <div>
       <nav>
-        <ul>
-          <li>
-            <Link to={`/`}>Home</Link>
-          </li>
-          <li>
-            <Link to={`/about`}>About</Link>
-          </li>
-        </ul>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to={"/"}>Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator>
+              <Slash />
+            </BreadcrumbSeparator>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to={"/about"}>About</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
       </nav>
 
-      <h1>Landing Pages</h1>
+      <Outlet />
     </div>
   );
 }
